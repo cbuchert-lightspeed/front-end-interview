@@ -1,20 +1,32 @@
 import type { FC } from "react"
 import type { Todo } from "../../types/Todo"
-import { Checkbox, ListItem, Text } from "@fluentui/react-components"
+import { Checkbox, makeStyles, Text } from "@fluentui/react-components"
 
 interface Props {
   todo: Todo
   handleToggleComplete: () => void
 }
 
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    alignItems: "center",
+  },
+  text: {
+    flexGrow: 1,
+  },
+})
+
 export const TodoListItem: FC<Props> = ({ todo, handleToggleComplete }) => {
+  const styles = useStyles()
+
   return (
-    <ListItem>
+    <li className={styles.container}>
       <Checkbox
         checked={todo.isComplete}
         onChange={handleToggleComplete}
       />
-      <Text>{todo.title}</Text>
-    </ListItem>
+      <Text className={styles.text}>{todo.title}</Text>
+    </li>
   )
 }

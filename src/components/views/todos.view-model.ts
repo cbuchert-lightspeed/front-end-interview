@@ -18,5 +18,13 @@ export function useTodos() {
     }
   }
 
-  return { todos, toggleTodo }
+  const addTodo = (newTodo: string) => {
+    model.addTodo(newTodo)
+  }
+
+  return {
+    todos,
+    toggleTodo,
+    addTodo,
+  }
 }

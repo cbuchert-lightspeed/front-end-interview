@@ -12,6 +12,15 @@ export class TodoModel {
     return unsubscribe
   }
 
+  addTodo = (newTodo: string) => {
+    const todo: Pick<Todo, "title" | "isComplete"> = {
+      title: newTodo,
+      isComplete: false,
+    }
+
+    this.todoAdapter.addTodo(todo)
+  }
+
   toggleTodo = (id: number) => {
     this.todoAdapter.getTodo(id).then((todo) => {
       todo.isComplete = !todo.isComplete

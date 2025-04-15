@@ -5,8 +5,7 @@ import { Observable } from "../lib/observable.ts"
 export class TodoAdapter {
   private observable = new Observable<Todo[]>()
 
-  constructor(private dataSource: typeof todosDataSource) {
-  }
+  constructor(private dataSource: typeof todosDataSource) {}
 
   subscribe = (subscriptionCallback: (data: Todo[]) => void) => {
     const key = this.observable.subscribe(subscriptionCallback)
@@ -20,9 +19,17 @@ export class TodoAdapter {
     return this.dataSource.getById(id)
   }
 
+  addTodo = (newTodo: Pick<Todo, "title" | "isComplete">) => {
+    this.dataSource.add({
+      ...newTodo,
+    }).then(this.refreshTodoList)
+  }
+
   updateTodo = (id: number, todo: Todo) => {
-    this.dataSource.setById(id, todo).then(() => {
-      this.dataSource.getAll().then(this.observable.notify)
-    })
+    this.dataSource.setById(id, todo).then(this.refreshTodoList)
+  }
+
+  private refreshTodoList = () => {
+    this.dataSource.getAll().then(this.observable.notify)
   }
 }

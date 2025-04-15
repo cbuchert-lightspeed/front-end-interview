@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@fluentui/react-components": "^9.61.6",
+    "@fluentui/react-icons": "^2.0.297",
+    "@formkit/auto-animate": "^0.8.2",
     "@tanstack/react-query": "^5.74.3",
     "@tanstack/react-router": "^1.116.0",
     "react": "^18.3.1",
