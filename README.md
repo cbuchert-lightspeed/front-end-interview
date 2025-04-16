@@ -1,54 +1,36 @@
-# React + TypeScript + Vite
+# Lightspeed DMS Technical Interview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Well hello! Welcome to our technical interview! We're excited that you've made it this far. Thanks for spending some of your time working with us to figure out if you're a good fit for our team and if we're a good fit for you!
 
-Currently, two official plugins are available:
+## What we're looking for
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This interview is probably a little different than most of the technical interviews you've done before. There are no 1337 code questions. No white boarding (unless you find it useful). No questions about building houses for giraffes or filling graphs with water. Just a repo with the stub of a Todo app.
 
-## Expanding the ESLint configuration
+During our interview, we'll ask you to extend the application with some additional functionality.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Here's exactly what we want to know:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. What is it like to work with you?
+2. How do you solve problems?
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+That's basically it. It's super open-ended.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Here's what we want to see:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- **Preparation.** We don't have a lot of time in our interview. Spending time explaining the project wastes everyone's time. Have you familiarized yourself with the codebase?
+- **Coding skills.** How are you with the languages we're working with?
+- **Engineering skills.** How do you think about systems and solve problems with them, around them, for them?
+- **Tooling proficiency.** How do you work with your tools?
+- **Search skills.** We spend a lot of time looking for answers when we're building things. What does that look like on your end?
+- **AI skills.** Turns out AI tools are a thing; who knew. It's pretty new stuff, and we're trying to ride the front of the wave. How do you use AI tools?
+- **Social skills.** None of us are islands. Sometimes code is nuanced and architectural patterns are foreign. Do you ask questions?
+- **Attention to detail.** Did you read this file? Sometimes there's something good hidden in a wall of text. :D
+- **Time management.** Let's be honest. This interview is too short to build anything real. What do you prioritize when time is limited?
+
+## What we hope you're looking for
+
+We get it. Interview nerves are real. Interviewing goes both ways. Forty-five minutes isn't that much time. We'd love to help you figure out if our team is a good fit for you. Please ask us questions!
+
+## We're rooting for you
+
+We want to hire someone smart, someone who's great to work with, someone who knows how to solve problems. We really hope it's you. Come prepared! Use all your tools! Talk to us! Let's have a good time and see if you're a strong fit for our team and if our team is a strong fit for you!
