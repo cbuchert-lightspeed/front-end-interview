@@ -21,7 +21,7 @@ export const AddTodo: FC<Props> = ({ handleAddTodo }) => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
 
-    handleAddTodo(newTodo.trim())
+    handleAddTodo(newTodo)
     setNewTodo("")
   }
 

@@ -19,7 +19,9 @@ export function useTodos() {
   }
 
   const addTodo = (newTodo: string) => {
-    model.addTodo(newTodo)
+    if (newTodo.trim().length) {
+      model.addTodo(newTodo)
+    }
   }
 
   return {
