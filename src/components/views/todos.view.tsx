@@ -20,7 +20,7 @@ export const TodosView: FC = () => {
 
   useEffect(() => {
     animationParent.current && autoAnimate(animationParent.current)
-  })
+  }, [])
 
   return (
     <>
