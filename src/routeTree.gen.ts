@@ -10,50 +10,62 @@
 
 import { createFileRoute } from '@tanstack/react-router'
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as AppRouteImport } from './routes/_app'
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as AppImport } from './routes/_app'
+const AppIndexLazyRouteImport = createFileRoute('/_app/')()
 
-// Create Virtual Routes
-
-const AppIndexLazyImport = createFileRoute('/_app/')()
-
-// Create/Update Routes
-
-const AppRoute = AppImport.update({
+const AppRoute = AppRouteImport.update({
   id: '/_app',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const AppIndexLazyRoute = AppIndexLazyImport.update({
+const AppIndexLazyRoute = AppIndexLazyRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppRoute,
 } as any).lazy(() => import('./routes/_app/index.lazy').then((d) => d.Route))
 
-// Populate the FileRoutesByPath interface
+export interface FileRoutesByFullPath {
+  '/': typeof AppIndexLazyRoute
+}
+export interface FileRoutesByTo {
+  '/': typeof AppIndexLazyRoute
+}
+export interface FileRoutesById {
+  __root__: typeof rootRouteImport
+  '/_app': typeof AppRouteWithChildren
+  '/_app/': typeof AppIndexLazyRoute
+}
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/'
+  id: '__root__' | '/_app' | '/_app/'
+  fileRoutesById: FileRoutesById
+}
+export interface RootRouteChildren {
+  AppRoute: typeof AppRouteWithChildren
+}
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/_app': {
       id: '/_app'
       path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AppImport
-      parentRoute: typeof rootRoute
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_app/': {
       id: '/_app/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof AppIndexLazyImport
-      parentRoute: typeof AppImport
+      preLoaderRoute: typeof AppIndexLazyRouteImport
+      parentRoute: typeof AppRoute
     }
   }
 }
-
-// Create and export the route tree
 
 interface AppRouteChildren {
   AppIndexLazyRoute: typeof AppIndexLazyRoute
@@ -65,61 +77,9 @@ const AppRouteChildren: AppRouteChildren = {
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
-export interface FileRoutesByFullPath {
-  '': typeof AppRouteWithChildren
-  '/': typeof AppIndexLazyRoute
-}
-
-export interface FileRoutesByTo {
-  '/': typeof AppIndexLazyRoute
-}
-
-export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/_app': typeof AppRouteWithChildren
-  '/_app/': typeof AppIndexLazyRoute
-}
-
-export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '' | '/'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/_app' | '/_app/'
-  fileRoutesById: FileRoutesById
-}
-
-export interface RootRouteChildren {
-  AppRoute: typeof AppRouteWithChildren
-}
-
 const rootRouteChildren: RootRouteChildren = {
   AppRoute: AppRouteWithChildren,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/_app"
-      ]
-    },
-    "/_app": {
-      "filePath": "_app.tsx",
-      "children": [
-        "/_app/"
-      ]
-    },
-    "/_app/": {
-      "filePath": "_app/index.lazy.tsx",
-      "parent": "/_app"
-    }
-  }
-}
-ROUTE_MANIFEST_END */
