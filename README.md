@@ -27,6 +27,8 @@ That's basically it. It's super open-ended.
 - **Attention to detail.** Did you read this file? Sometimes there's something good hidden in a wall of text. :D
 - **Time management.** Let's be honest. This interview is too short to build anything real. What do you prioritize when time is limited?
 
+Come prepared to share your screen. We use Zoom.
+
 ## What we hope you're looking for
 
 We get it. Interview nerves are real. Interviewing goes both ways. Forty-five minutes isn't that much time. We'd love to help you figure out if our team is a good fit for you. Please ask us questions!
