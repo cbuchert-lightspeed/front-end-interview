@@ -27,7 +27,8 @@ That's basically it. It's super open-ended.
 - **Attention to detail.** Did you read this file? Sometimes there's something good hidden in a wall of text. :D
 - **Time management.** Let's be honest. This interview is too short to build anything real. What do you prioritize when time is limited?
 
-Come prepared to share your screen. We use Zoom.
+#### Important note:
+Come prepared to share your screen. We use Zoom. If you're using Linux please verify that screen sharing is working before the interview.
 
 ## What we hope you're looking for
 
